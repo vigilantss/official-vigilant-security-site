@@ -365,15 +365,23 @@ export default function Home() {
                 {/* Left Side (Image) - Inspired by reference image */}
                 <div className="lg:w-1/2 relative min-h-[300px] lg:min-h-full bg-zinc-900">
                    <Image 
-                      src="https://images.unsplash.com/photo-1557597774-9d2739f85aae?auto=format&fit=crop&q=80&w=800" 
+                      src="/image3.png" 
                       alt="Contact Background" 
                       fill 
                       className="object-cover opacity-60"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-br from-zinc-900/80 to-transparent" />
-                    <div className="absolute bottom-12 left-12 right-12 text-white">
+                    <div className="absolute inset-0 bg-gradient-to-br from-zinc-900/80 to-zinc-900/70" />
+                    {/* For Desktop Devices */}
+                    <div className="absolute bottom-12 left-12 right-12 text-white hidden lg:block">
                       <h4 className="text-5xl font-bold mb-6 tracking-tight">We're ready</h4>
                       <p className="text-xl opacity-90 leading-relaxed max-w-sm">
+                        Ready to dig into your project, clarify the requirements, and get the security process underway.
+                      </p>
+                    </div>
+                    {/* For Mobile Devices */}
+                    <div className="absolute bottom-12 left-12 right-12 text-white md:hidden lg:hidden">
+                      <h4 className="text-4xl font-bold mb-6 tracking-tight">We're ready</h4>
+                      <p className="text-[16px] opacity-90 leading-relaxed max-w-sm">
                         Ready to dig into your project, clarify the requirements, and get the security process underway.
                       </p>
                     </div>
@@ -390,11 +398,11 @@ export default function Home() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                       <div className="space-y-3">
                         <Label className="text-zinc-950 font-bold text-sm">First name*</Label>
-                        <Input placeholder="First name" name="first_name" className="h-14 border-zinc-200 bg-zinc-50 text-zinc-900 focus:bg-white focus:ring-zinc-900 rounded-xl" required />
+                        <Input placeholder="First name" name="first_name" className="h-14 border-zinc-200 text-black bg-zinc-50 focus:bg-white focus:ring-zinc-900 rounded-xl" required />
                       </div>
                       <div className="space-y-3">
                         <Label className="text-zinc-950 font-bold text-sm">Last name*</Label>
-                        <Input placeholder="Last name" name="last_name" className="h-14 border-zinc-200 bg-zinc-50 text-primary focus:bg-white focus:ring-zinc-900 rounded-xl" required />
+                        <Input placeholder="Last name" name="last_name" className="h-14 border-zinc-200 bg-zinc-50 text-black focus:bg-white focus:ring-zinc-900 rounded-xl" required />
                       </div>
                     </div>
 
@@ -403,7 +411,7 @@ export default function Home() {
                         <Label className="text-zinc-950 font-bold text-sm">Email address*</Label>
                         <div className="relative">
                           <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-zinc-400" />
-                          <Input type="email" name="email" placeholder="example@gmail.com" className="h-14 pl-12 border-zinc-200 bg-zinc-50 focus:bg-white focus:ring-zinc-900 rounded-xl" required />
+                          <Input type="email" name="email" placeholder="example@gmail.com" className="h-14 pl-12 text-black border-zinc-200 bg-zinc-50 focus:bg-white focus:ring-zinc-900 rounded-xl" required />
                         </div>
                       </div>
                       <div className="space-y-3">
@@ -413,7 +421,7 @@ export default function Home() {
                             <span className="font-bold text-zinc-900">ZA</span>
                             <ChevronDown className="w-4 h-4 text-zinc-400" />
                           </div>
-                          <Input placeholder="Phone number" name="phone_number" className="h-14 flex-1 border-zinc-200 bg-zinc-50 focus:bg-white focus:ring-zinc-900 rounded-xl" required />
+                          <Input placeholder="Phone number" name="phone_number" className="h-14 flex-1 text-black border-zinc-200 bg-zinc-50 focus:bg-white focus:ring-zinc-900 rounded-xl" required />
                         </div>
                       </div>
                     </div>
