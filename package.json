@@ -10,6 +10,7 @@
     },
     "dependencies": {
         "@babel/parser": "^7.28.5",
+        "@emailjs/browser": "^4.4.1",
         "@headlessui/react": "^2.2.9",
         "@heroicons/react": "^2.2.0",
         "@hookform/resolvers": "^5.1.1",
@@ -60,7 +61,6 @@
         "dotted-map": "^2.2.3",
         "drizzle-kit": "^0.31.6",
         "drizzle-orm": "^0.44.7",
-        "emailjs-com": "^3.2.0",
         "embla-carousel-auto-scroll": "^8.6.0",
         "embla-carousel-autoplay": "^8.6.0",
         "embla-carousel-react": "^8.6.0",

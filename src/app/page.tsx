@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import emailjs from "@emailjs/browser";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   Shield, 
@@ -121,15 +122,36 @@ const advancedServices = [
 
 export default function Home() {
   const [showAdvanced, setShowAdvanced] = useState(false);
-  const [ctaState, setCtaState] = useState<'idle' | 'form' | 'success'>('idle');
+  const [ctaState, setCtaState] = useState<'idle' | 'form' | 'success' | 'error'>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setCtaState('success');
-    setTimeout(() => {
-      setCtaState('idle');
-    }, 5000);
-  };
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   setCtaState('success');
+  //   setTimeout(() => {
+  //     setCtaState('idle');
+  //   }, 5000);
+  // };
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  const form = e.currentTarget; // the form element
+
+  emailjs
+    .sendForm(
+      process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+      process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+      form,
+      process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+    )
+    .then(() => {
+      setCtaState("success"); // show success message
+      form.reset();           // clear form
+      setTimeout(() => setCtaState("idle"), 5000);
+    })
+    .catch((error: any) => {
+      console.error("EmailJS error:", error);
+      setCtaState("error");   // show error message
+    });
+};
 
   return (
     <div className="relative min-h-screen bg-background font-sans overflow-x-hidden">
@@ -368,11 +390,11 @@ export default function Home() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                       <div className="space-y-3">
                         <Label className="text-zinc-950 font-bold text-sm">First name*</Label>
-                        <Input placeholder="First name" className="h-14 border-zinc-200 bg-zinc-50 focus:bg-white focus:ring-zinc-900 rounded-xl" required />
+                        <Input placeholder="First name" name="first_name" className="h-14 border-zinc-200 bg-zinc-50 text-zinc-900 focus:bg-white focus:ring-zinc-900 rounded-xl" required />
                       </div>
                       <div className="space-y-3">
                         <Label className="text-zinc-950 font-bold text-sm">Last name*</Label>
-                        <Input placeholder="Last name" className="h-14 border-zinc-200 bg-zinc-50 focus:bg-white focus:ring-zinc-900 rounded-xl" required />
+                        <Input placeholder="Last name" name="last_name" className="h-14 border-zinc-200 bg-zinc-50 text-primary focus:bg-white focus:ring-zinc-900 rounded-xl" required />
                       </div>
                     </div>
 
@@ -381,7 +403,7 @@ export default function Home() {
                         <Label className="text-zinc-950 font-bold text-sm">Email address*</Label>
                         <div className="relative">
                           <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-zinc-400" />
-                          <Input type="email" placeholder="example@gmail.com" className="h-14 pl-12 border-zinc-200 bg-zinc-50 focus:bg-white focus:ring-zinc-900 rounded-xl" required />
+                          <Input type="email" name="email" placeholder="example@gmail.com" className="h-14 pl-12 border-zinc-200 bg-zinc-50 focus:bg-white focus:ring-zinc-900 rounded-xl" required />
                         </div>
                       </div>
                       <div className="space-y-3">
@@ -391,14 +413,14 @@ export default function Home() {
                             <span className="font-bold text-zinc-900">ZA</span>
                             <ChevronDown className="w-4 h-4 text-zinc-400" />
                           </div>
-                          <Input placeholder="Phone number" className="h-14 flex-1 border-zinc-200 bg-zinc-50 focus:bg-white focus:ring-zinc-900 rounded-xl" required />
+                          <Input placeholder="Phone number" name="phone_number" className="h-14 flex-1 border-zinc-200 bg-zinc-50 focus:bg-white focus:ring-zinc-900 rounded-xl" required />
                         </div>
                       </div>
                     </div>
 
                     <div className="space-y-3">
                       <Label className="text-zinc-950 font-bold text-sm">Your Message</Label>
-                      <Textarea placeholder="Input Message" className="min-h-[140px] border-zinc-200 bg-zinc-50 focus:bg-white text-black focus:ring-zinc-900 rounded-xl resize-none p-4" />
+                      <Textarea placeholder="Input Message" name ="message"className="min-h-[140px] border-zinc-200 bg-zinc-50 focus:bg-white text-black focus:ring-zinc-900 rounded-xl resize-none p-4" />
                     </div>
 
                     <Button type="submit" className="w-full h-16 bg-primary hover:bg-primary-dark text-white font-bold text-sm uppercase tracking-[0.2em] rounded-xl shadow-xl shadow-green-900/20 transition-all active:scale-[0.98]">
