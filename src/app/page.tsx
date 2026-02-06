@@ -363,7 +363,8 @@ export default function Home() {
                 className="bg-white rounded-[2rem] overflow-hidden shadow-2xl flex flex-col lg:flex-row min-h-[600px]"
               >
                 {/* Left Side (Image) - Inspired by reference image */}
-                <div className="lg:w-1/2 relative min-h-[300px] lg:min-h-full bg-zinc-900">
+                {/* For Desktop Devices */}
+                <div className="lg:w-1/2 relative min-h-[300px] lg:min-h-full bg-zinc-900 hidden lg:block">
                    <Image 
                       src="/image3.png" 
                       alt="Contact Background" 
@@ -371,17 +372,9 @@ export default function Home() {
                       className="object-cover opacity-60"
                     />
                     <div className="absolute inset-0 bg-gradient-to-br from-zinc-900/80 to-zinc-900/70" />
-                    {/* For Desktop Devices */}
-                    <div className="absolute bottom-12 left-12 right-12 text-white hidden lg:block">
+                    <div className="absolute bottom-12 left-12 right-12 text-white">
                       <h4 className="text-5xl font-bold mb-6 tracking-tight">We're ready</h4>
                       <p className="text-xl opacity-90 leading-relaxed max-w-sm">
-                        Ready to dig into your project, clarify the requirements, and get the security process underway.
-                      </p>
-                    </div>
-                    {/* For Mobile Devices */}
-                    <div className="absolute bottom-12 left-12 right-12 text-white md:hidden lg:hidden">
-                      <h4 className="text-4xl font-bold mb-6 tracking-tight">We're ready</h4>
-                      <p className="text-[16px] opacity-90 leading-relaxed max-w-sm">
                         Ready to dig into your project, clarify the requirements, and get the security process underway.
                       </p>
                     </div>
