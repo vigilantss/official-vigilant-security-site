@@ -112,7 +112,7 @@ export const Footer = () => {
               <h4 className="text-white font-bold mb-8 text-xl tracking-tight">Contact</h4>
               <ul className="space-y-6">
                 <li className="text-zinc-400 max-w-[200px] leading-relaxed">
-                  2385, 19 Brazil Street, Lotus Gardens, Pretoria, 0008.
+                  3 mammogale st sauslville, Pretoria, South Africa, 0125
                 </li>
                 <li>
                   <Link href="mailto:vigilantsecretservices@gmail.com" className="text-zinc-400 hover:text-white transition-colors block">
