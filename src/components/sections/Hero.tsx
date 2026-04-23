@@ -55,7 +55,7 @@ export function Hero() {
                 <Link href="tel:0817295201" className="inline-flex w-full">
                   <Button size="lg" variant="outline" className="h-12 px-6 text-sm sm:h-13 sm:px-7 sm:text-base lg:h-14 lg:px-8 lg:text-base rounded-[0.50rem] border-zinc-700 hover:bg-white w-full">
                     <Phone className="w-5 h-5 mr-2" />
-                    Call 081 729 5201
+                    Call 012 747 0649
                   </Button>
                 </Link>
               </div>
