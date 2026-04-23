@@ -120,7 +120,7 @@ export const Footer = () => {
                   </Link>
                 </li>
                 <li className="text-zinc-400">
-                  081 729 5201
+                  012 747 0649
                 </li>
                 <li className="text-zinc-400">
                   <span className='text-primary'>REG NO:</span> 2025/277287/07
